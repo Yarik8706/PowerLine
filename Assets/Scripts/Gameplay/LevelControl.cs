@@ -51,6 +51,8 @@ namespace Gameplay
 
         private void StartNewGame()
         {
+            YandexGameControl.GetLeaderboardData();
+            YandexGame.FullscreenShow();
             ScoreCounterUI.Instance.AddScore(LevelDifficultIndex);
             ShowMenuButton.Instance.ChangeActive(true);
             BackgroundGradientControl.Instance.SetRandomGradient();
@@ -109,7 +111,7 @@ namespace Gameplay
 
         public void ChangeDifficultAndGenerateLvl(int newDifficult)
         {
-            YandexGameControl.Instance.SaveOtherData();
+            YandexGameControl.SaveOtherData();
             LevelDifficultIndex = newDifficult;
             LevelGenerationControl.Instance.GenerateLvl(difficultLevelsData[newDifficult]);
             baseGameZoneScale = LevelGenerationControl.Instance.powerLineElementsContainer.localScale;

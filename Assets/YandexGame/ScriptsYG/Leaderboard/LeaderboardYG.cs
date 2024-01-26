@@ -82,7 +82,7 @@ namespace YG
 
         private void OnEnable()
         {
-            YandexGame.onGetLeaderboard += OnUpdateLB;
+             YandexGame.onGetLeaderboard+= OnUpdateLB;
 
             if (updateLBMethod == UpdateLBMethod.OnEnable && YandexGame.initializedLB)
             {

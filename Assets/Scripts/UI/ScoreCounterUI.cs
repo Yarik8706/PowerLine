@@ -39,7 +39,7 @@ namespace UI
             }
             
             Score += addScore;
-            YandexGameControl.Instance.SaveDataScore();
+            YandexGameControl.SaveDataScore();
             scoreText.transform.DOScale(scoreText.transform.localScale * 1.2f, 0.5f).OnComplete(() =>
             {
                 scoreText.text = Score + "";

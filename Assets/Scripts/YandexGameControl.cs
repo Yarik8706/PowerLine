@@ -15,12 +15,19 @@ public class YandexGameControl : MonoBehaviour
 #if UNITY_EDITOR
         YandexGame.ResetSaveProgress();
 #endif
-        StartCoroutine(LoadPassedLvlsName());
+        StartCoroutine(LoadYandexGameData());
     }
 
-    private IEnumerator LoadPassedLvlsName()
+    public static void GetLeaderboardData()
+    {
+        YandexGame.GetLeaderboard("GlobalScore",
+                 Int32.MaxValue, Int32.MaxValue, Int32.MaxValue, "nonePhoto");
+    }
+
+    private IEnumerator LoadYandexGameData()
     {
         yield return new WaitUntil(() => YandexGame.SDKEnabled);
+        GetLeaderboardData();
         if (!YandexGame.savesData.isFirstSession)
         {
             ScoreCounterUI.Instance.UpdateScore(YandexGame.savesData.score);
@@ -42,7 +49,7 @@ public class YandexGameControl : MonoBehaviour
         }
     }
 
-    public void SaveOtherData()
+    public static void SaveOtherData()
     {
         YandexGame.savesData.isNeedCellHatch = HatchControl.Instance.IsHatchActive;
         YandexGame.savesData.isNeedMusic = MusicControl.Instance.MusicActive;
@@ -50,7 +57,7 @@ public class YandexGameControl : MonoBehaviour
         YandexGame.SaveProgress();
     }
     
-    public void SaveDataScore()
+    public static void SaveDataScore()
     {
         YandexGame.savesData.score = ScoreCounterUI.Instance.Score;
         YandexGame.SaveProgress();

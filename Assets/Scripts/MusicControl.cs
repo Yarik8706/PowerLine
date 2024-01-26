@@ -23,7 +23,7 @@ public class MusicControl : MonoBehaviour
     public void ChangeMusicActive()
     {
         MusicActive = !MusicActive;
-        YandexGameControl.Instance.SaveOtherData();
+        YandexGameControl.SaveOtherData();
         musicIconImage.sprite = MusicActive ? activeMusicIcon : disableMusicIcon;
         audioMixer.SetFloat("Music", MusicActive ? 0 : -80);
     }

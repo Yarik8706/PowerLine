@@ -20,7 +20,7 @@ namespace Gameplay
         public void ChangeHatchActive(bool active)
         {
             IsHatchActive = !IsHatchActive;
-            YandexGameControl.Instance.SaveOtherData();
+            YandexGameControl.SaveOtherData();
             foreach (var activeHatch in _activeHatches)
             {
                 activeHatch.SetActive(IsHatchActive);
